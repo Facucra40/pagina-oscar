@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nominados al Oscar</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0f0f0f;
+  color: #f2f2f2;
+  overflow: hidden; /* desactiva scroll natural */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: rgba(15,15,15,0.95);
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #d4af37;
+  letter-spacing: 2px;
+}
+
+.container {
+  height: 100vh;
+  transition: transform 0.9s ease-in-out;
+}
+
+section.categoria {
+  height: 100vh;
+  padding: 7rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Banner inicial */
+section.banner {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner-content h2 {
+  font-size: 3rem;
+  color: #d4af37;
+  margin-bottom: 1rem;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 600px;
+}
+
+.categoria h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* GRID BASE */
+.nominados {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* MEJOR PELICULA: 10 columnas */
+.nominados.pelicula {
+  grid-template-columns: repeat(10, 1fr);
+}
+
+/* RESTO: 5 columnas */
+.nominados.estandar {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px; /* asegura que la tarjeta siempre se vea */
+}
+
+.card img {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #333, #555); /* placeholder visible */
+}
+
+.card h3 {
+  margin: 0.4rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.nominados .card {
+  transition: 
+    transform 0.3s ease,
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Al pasar el mouse por una card */
+.nominados .card:hover {
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+/* Oscurece todas cuando el grid está en hover */
+.nominados:hover .card {
+  filter: brightness(0.7);
+  opacity: 0.7;
+}
+
+/* Mantiene clara solo la card activa */
+.nominados .card:hover {
+  filter: brightness(1);
+  opacity: 1;
+}
+
+.card.selected {
+  outline: 3px solid #d4af37;
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+  transform: scale(1.0);
+  z-index: 3;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NOMINADOS AL OSCAR</h1>
+</header>
+
+<div class="container" id="container">
+
+  <!-- BANNER INICIAL -->
+  <section class="categoria banner">
+    <div class="banner-content">
+      <h2>Bienvenidos a los Premios Oscar</h2>
+      <p>Presentación oficial de las nominaciones</p>
+    </div>
+  </section>
+
+  <!-- MEJOR PELÍCULA -->
+  <section class="categoria">
+    <h2>Mejor Película</h2>
+    <div class="nominados pelicula">
+      <div class="card"><img><h3>Película 1</h3></div>
+      <div class="card"><img><h3>Película 2</h3></div>
+      <div class="card"><img><h3>Película 3</h3></div>
+      <div class="card"><img><h3>Película 4</h3></div>
+      <div class="card"><img><h3>Película 5</h3></div>
+      <div class="card"><img><h3>Película 6</h3></div>
+      <div class="card"><img><h3>Película 7</h3></div>
+      <div class="card"><img><h3>Película 8</h3></div>
+      <div class="card"><img><h3>Película 9</h3></div>
+      <div class="card"><img><h3>Película 10</h3></div>
+    </div>
+  </section>
+
+  <!-- MEJOR DIRECTOR -->
+  <section class="categoria"><h2>Mejor Director</h2><div class="nominados estandar">
+    <div class="card"><img src="img/director/PTA.jpg"><h3>Paul Thomas Anderson (One Battle After Another)</h3></div>
+    <div class="card"><img src="img/director/coogler.webp"><h3>Ryan Coogler (Sinners) </h3></div>
+    <div class="card"><img src="img/director/joaquim.jpg"><h3>Joaquim Trier (Sentimental Value)</h3></div>
+    <div class="card"><img src="img/director/panahi.avif"><h3>Jafar Panahi (It Was Just An Accident)</h3></div>
+    <div class="card"><img src="img/director/zhao.jpg"><h3>Chloe Zhao (Hamnet)</h3></div>
+  </div></section>
+
+  <!-- MEJOR ACTOR -->
+  <section class="categoria"><h2>Mejor Actor</h2><div class="nominados estandar">
+    <div class="card"><img><h3>Actor 1</h3></div>
+    <div class="card"><img><h3>Actor 2</h3></div>
+    <div class="card"><img><h3>Actor 3</h3></div>
+    <div class="card"><img><h3>Actor 4</h3></div>
+    <div class="card"><img><h3>Actor 5</h3></div>
+  </div></section>
+
+  <!-- MEJOR ACTRIZ -->
+  <section class="categoria"><h2>Mejor Actriz</h2><div class="nominados estandar">
+    <div class="card"><img><h3>Actriz 1</h3></div>
+    <div class="card"><img><h3>Actriz 2</h3></div>
+    <div class="card"><img><h3>Actriz 3</h3></div>
+    <div class="card"><img><h3>Actriz 4</h3></div>
+    <div class="card"><img><h3>Actriz 5</h3></div>
+  </div></section>
+
+  <!-- MEJOR ACTOR DE REPARTO -->
+  <section class="categoria"><h2>Mejor Actor de Reparto</h2><div class="nominados estandar">
+    <div class="card"><img><h3>Actor Reparto 1</h3></div>
+    <div class="card"><img><h3>Actor Reparto 2</h3></div>
+    <div class="card"><img><h3>Actor Reparto 3</h3></div>
+    <div class="card"><img><h3>Actor Reparto 4</h3></div>
+    <div class="card"><img><h3>Actor Reparto 5</h3></div>
+  </div></section>
+
+  <!-- MEJOR ACTRIZ DE REPARTO -->
+  <section class="categoria"><h2>Mejor Actriz de Reparto</h2><div class="nominados estandar">
+    <div class="card"><img><h3>Actriz Reparto 1</h3></div>
+    <div class="card"><img><h3>Actriz Reparto 2</h3></div>
+    <div class="card"><img><h3>Actriz Reparto 3</h3></div>
+    <div class="card"><img><h3>Actriz Reparto 4</h3></div>
+    <div class="card"><img><h3>Actriz Reparto 5</h3></div>
+  </div></section>
+
+  <!-- MEJOR GUION ORIGINAL -->
+  <section class="categoria"><h2>Mejor Guion Original</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Guion 1</h3></div>
+  <div class="card"><img><h3>Guion 2</h3></div>
+  <div class="card"><img><h3>Guion 3</h3></div>
+  <div class="card"><img><h3>Guion 4</h3></div>
+  <div class="card"><img><h3>Guion 5</h3></div>
+</div></section>
+
+  <!-- MEJOR GUION ADAPTADO -->
+  <section class="categoria"><h2>Mejor Guion Adaptado</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Guion 1</h3></div>
+  <div class="card"><img><h3>Guion 2</h3></div>
+  <div class="card"><img><h3>Guion 3</h3></div>
+  <div class="card"><img><h3>Guion 4</h3></div>
+  <div class="card"><img><h3>Guion 5</h3></div>
+</div></section>
+
+  <!-- MEJOR PELÍCULA INTERNACIONAL -->
+  <section class="categoria"><h2>Mejor Película Internacional</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR PELÍCULA DE ANIMACIÓN -->
+  <section class="categoria"><h2>Mejor Película de Animación</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR CORTOMETRAJE DE ANIMACIÓN -->
+  <section class="categoria"><h2>Mejor Cortometraje de Animación</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR CORTOMETRAJE DE ACCIÓN REAL -->
+  <section class="categoria"><h2>Mejor Cortometraje de Acción Real</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR FOTOGRAFÍA -->
+  <section class="categoria"><h2>Mejor Fotografía</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR DISEÑO DE PRODUCCIÓN -->
+  <section class="categoria"><h2>Mejor Diseño de Producción</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR VESTUARIO -->
+  <section class="categoria"><h2>Mejor Vestuario</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR MAQUILLAJE Y PELUQUERÍA -->
+  <section class="categoria"><h2>Mejor Maquillaje y Peluquería</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR EDICIÓN -->
+  <section class="categoria"><h2>Mejor Edición</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR SONIDO -->
+  <section class="categoria"><h2>Mejor Sonido</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJORES EFECTOS VISUALES -->
+  <section class="categoria"><h2>Mejores Efectos Visuales</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR BANDA SONORA ORIGINAL -->
+  <section class="categoria"><h2>Mejor Banda Sonora Original</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Nominado 1</h3></div>
+  <div class="card"><img><h3>Nominado 2</h3></div>
+  <div class="card"><img><h3>Nominado 3</h3></div>
+  <div class="card"><img><h3>Nominado 4</h3></div>
+  <div class="card"><img><h3>Nominado 5</h3></div>
+</div></section>
+
+  <!-- MEJOR CANCIÓN ORIGINAL -->
+  <section class="categoria"><h2>Mejor Canción Original</h2><div class="nominados estandar">
+  <div class="card"><img><h3>Canción 1</h3></div>
+  <div class="card"><img><h3>Canción 2</h3></div>
+  <div class="card"><img><h3>Canción 3</h3></div>
+  <div class="card"><img><h3>Canción 4</h3></div>
+  <div class="card"><img><h3>Canción 5</h3></div>
+</div></section>
+
+</div>
+  </section>
+
+  <!-- MEJOR PELÍCULA -->
+  <section class="categoria">
+    <h2>Mejor Película</h2>
+    <div class="nominados pelicula">
+      <div class="card"><img><h3>Película 1</h3></div>
+      <div class="card"><img><h3>Película 2</h3></div>
+      <div class="card"><img><h3>Película 3</h3></div>
+      <div class="card"><img><h3>Película 4</h3></div>
+      <div class="card"><img><h3>Película 5</h3></div>
+      <div class="card"><img><h3>Película 6</h3></div>
+      <div class="card"><img><h3>Película 7</h3></div>
+      <div class="card"><img><h3>Película 8</h3></div>
+      <div class="card"><img><h3>Película 9</h3></div>
+      <div class="card"><img><h3>Película 10</h3></div>
+    </div>
+  </section>
+
+  <!-- MEJOR ACTOR -->
+  <section class="categoria">
+    <h2>Mejor Actor</h2>
+    <div class="nominados estandar">
+      <div class="card"><img><h3>Actor 1</h3></div>
+      <div class="card"><img><h3>Actor 2</h3></div>
+      <div class="card"><img><h3>Actor 3</h3></div>
+      <div class="card"><img><h3>Actor 4</h3></div>
+      <div class="card"><img><h3>Actor 5</h3></div>
+    </div>
+  </section>
+
+  <!-- MEJOR ACTRIZ -->
+  <section class="categoria">
+    <h2>Mejor Actriz</h2>
+    <div class="nominados estandar">
+      <div class="card"><img><h3>Actriz 1</h3></div>
+      <div class="card"><img><h3>Actriz 2</h3></div>
+      <div class="card"><img><h3>Actriz 3</h3></div>
+      <div class="card"><img><h3>Actriz 4</h3></div>
+      <div class="card"><img><h3>Actriz 5</h3></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const container = document.getElementById('container');
+let sections = Array.from(document.querySelectorAll('.categoria'));
+let current = 0;
+let scrolling = false;
+
+function goTo(index) {
+  container.style.transform = `translateY(-${index * 100}vh)`;
+}
+
+window.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (scrolling) return;
+  scrolling = true;
+
+  if (e.deltaY > 0 && current < sections.length - 1) current++;
+  if (e.deltaY < 0 && current > 0) current--;
+
+  goTo(current);
+
+  setTimeout(() => scrolling = false, 900);
+}, { passive: false });
+
+document.querySelectorAll('.nominados').forEach(grid => {
+  grid.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      grid.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
