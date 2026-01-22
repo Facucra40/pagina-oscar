@@ -149,82 +149,43 @@ input{
 <main id="main"></main>
 
 <script>
-/* PLACEHOLDER */
-const P = t =>
-  `https://placehold.co/500x750/111111/d4af37?text=${encodeURIComponent(t)}`;
-
-/* DATA */
 const movies = [
  {title:"A Friend of Dorothy",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BMTkxYmE4ODQtYzA4Zi00MmEzLWI4MmUtOGViN2VkZjczY2NlXkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Arco",categories:["Mejor Película Animada"],where:"Cines (estreno limitado) / Próximamente en streaming",poster:"https://m.media-amazon.com/images/M/MV5BM2IzNjdiNzUtNTJjMy00Mjk5LTg3MzItNzA2ZjYzOWE2MGIyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Avatar: fuego y ceniza",categories:["Mejores Efectos Visuales","Mejor Diseño de Vestuario"],where:"Cines",poster:"https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Blue Moon",categories:["Mejor Actor","Mejor Guion Original"],where:"Cines / Alquiler digital",poster:"https://m.media-amazon.com/images/M/MV5BODQ0NjNlN2MtNGRmZi00OGYzLWFjNGYtMjkyMTlmMWFkNTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Bugonia",categories:["Mejor Película","Mejor Actriz","Mejor Guion Adaptado","Banda Sonora Original"],where:"Peacock / Alquiler digital",poster:"https://pics.filmaffinity.com/Bugonia-602321624-large.jpg"},
-
-{title:"Butterfly",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://miro.medium.com/v2/resize:fit:3996/format:webp/1*nG5tcRlBgHrDMyyZlRrdeg.jpeg"},
-
-{title:"Butcher’s Stain",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BYTQ2NDM4MzYtYjM5ZS00YTcyLWI2ZjktN2U4YjdmMzAxZDEzXkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Come See Me In The Good Light",categories:["Mejor Documental"],where:"Alquiler digital / Festivales",poster:"https://m.media-amazon.com/images/M/MV5BZTEwNjRiMzUtMmU1OC00OWE5LTkwYjItMGE1NTQwMTFiM2NmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Cutting Through Rocks",categories:["Mejor Documental"],where:"Festivales / No disponible",poster:"https://m.media-amazon.com/images/M/MV5BYmZkZmU2OTctM2U4Ny00NmMyLWFmZTktMjk4MDJkY2QyZDdiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Elio",categories:["Mejor Película Animada"],where:"Disney+",poster:"https://lumiere-a.akamaihd.net/v1/images/image002_0ebab968.png"},
-
-{title:"F1",categories:["Mejor Película","Mejor Sonido","Mejor Montaje","Mejor Efectos Visuales"],where:"Apple TV+",poster:"https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Forevergreen",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://static.wixstatic.com/media/aead62_c232b06a04f042f3b875c22437cf2a3b~mv2.jpg"},
-
-{title:"Frankenstein",categories:["Mejor Película","Mejor Actor de Reparto","Mejor Guion Adaptado","Mejor Cinematografía","Banda Sonora Original","Mejor Diseño de Producción","Mejor Diseño de Vestuario","Mejor Maquillaje y Peinado","Mejor Sonido"],where:"Netflix",poster:"https://m.media-amazon.com/images/M/MV5BYzYzNDYxMTQtMTU4OS00MTdlLThhMTQtZjI4NGJmMTZmNmRiXkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Hamnet",categories:["Mejor Película","Mejor Actriz","Mejor Guion Adaptado","Mejor Dirección","Diseño de Vestuario","Mejor Casting","Banda Sonora Original","Diseño de Producción"],where:"Cines / Próximamente en streaming",poster:"https://m.media-amazon.com/images/M/MV5BMDQ5ZmY0OWYtOTYzZi00Mzg5LWE3N2EtMjYwZTAzZmJhYjkyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"It Was Just An Accident",categories:["Mejor Película Internacional";"Mejor Guion Original"],where:"MUBI (algunas regiones)",poster:"https://m.media-amazon.com/images/M/MV5BMWJkZmZlNjUtM2Q1OC00MmNjLWFkOWEtNjRhN2FkM2ZlMjI3XkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Jane Austen’s Period Drama",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://upload.wikimedia.org/wikipedia/en/2/25/Jane_Austen%27s_Period_Drama_film_poster.jpg"},
-
-{title:"Kpop Demon Hunters",categories:["Mejor Película Animada","Mejor Canción Original"],where:"Netflix",poster:"https://pics.filmaffinity.com/K_Pop_Demon_Hunters-845492393-mmed.jpg"},
-
-{title:"La pequeña Amélie o el personaje de la lluvia",categories:["Mejor Película Animada"],where:"Cines / Próximamente en streaming",poster:"https://s3.amazonaws.com/nightjarprod/content/uploads/sites/130/2025/10/27180833/smasJY24MYsQ6JMxW817KmCimVt-683x1024.jpg"},
-
-{title:"Marty Supreme",categories:["Mejor Película","Mejor Dirección","Mejor Actor","Mejor Guion Original","Mejor Montaje", "Mejor Fotografía","Diseño de Vestuario", "Mejor Reparto", "Diseño de Producción"],where:"Cines",poster:"https://m.media-amazon.com/images/M/MV5BZTRhYjI1MTItMWYwMi00MjY5LWI1OTktMzQwNzA3MWJlN2QyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Mr. Nobody Against Putin",categories:["Mejor Documental"],where:"Festivales / Alquiler digital",poster:"https://kinolorber.com/media_cache/userFiles/uploads/films/mr-nobody-against-putin/full/MrNobodyAgainstPutin_poster_KL_2025x3000.jpg"},
-
-{title:"One Battle After Another",categories:["Mejor Película","Mejor Dirección","Mejor Guion Adaptado","Mejor Actor","Mejor Actriz de Reparto","Mejor Actor de Reparto","Mejor Montaje","Mejor Fotografía", "Mejor Casting","Mejor Banda Sonora", "Diseño de Producción","Mejor Sonido"],where:"Max (HBO)",poster:"https://s3.amazonaws.com/nightjarprod/content/uploads/sites/261/2025/10/06134335/m1jFoahEbeQXtx4zArT2FKdbNIj-scaled.jpg"},
-
-{title:"Retirement Plan",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BNGI3ODc4ZTUtZmNiOC00MzUzLTg1NTItZTUwNDViNDNhNzgxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Sentimental Value",categories:["Mejor Película","Mejor Dirección","Mejor Guion Original"],where:"Alquiler digital (Prime Video / Apple TV)",poster:"https://m.media-amazon.com/images/M/MV5BNTMwMTk0Y2QtY2VhNy00OGYwLThkMjMtZjkwMGI3MTJiMjAyXkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Sirat",categories:["Mejor Película Internacional"],where:"Cines de autor / MUBI",poster:"https://m.media-amazon.com/images/M/MV5BYjIxMTIwNmYtMzczMi00NWIzLTg1ODgtOWFhYjE3YTNkZDI0XkEyXkFqcGc@._V1_.jpg"},
-
-{title:"Sinners",categories:["Mejor Película","Mejor Actor","Mejor Fotografía"],where:"Max (HBO)",poster:"https://m.media-amazon.com/images/M/MV5BNjIwZWY4ZDEtMmIxZS00NDA4LTg4ZGMtMzUwZTYyNzgxMzk5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"The Alabama Solution",categories:["Mejor Documental Corto"],where:"No disponible",poster:"https://a.ltrbxd.com/resized/film-poster/1/2/9/5/2/0/6/1295206-the-alabama-solution-0-230-0-345-crop.jpg?v=1466f00681"},
-
-{title:"The Girl Who Cried Pearls",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BOGZhMWIwYmEtN2MyMS00OGFjLWIxYWMtNDMyMWNkZTAyMWI3XkEyXkFqcGc@._V1_.jpg"},
-
-{title:"The Perfect Neighbor",categories:["Mejor Documental Corto"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BZmYxZjA5YmItMjJkYi00NzllLWJjMzgtZjFjZjBlZGQwMmRkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"The Secret Agent",categories:["Mejor Película","Mejor Actor de Reparto"],where:"Cines / Próximamente en streaming",poster:"https://shop.trigon-film.org/en/Posters_One_Sheet/The_Secret_Agent/cover_full.jpg"},
-
-{title:"The Singers",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BNWE3YjQ1ZGYtNjYyZC00ZmI0LWFjNDAtZWZiZWIxNzBlMzBkXkEyXkFqcGc@._V1_.jpg"},
-
-{title:"The Three Sisters",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://i.ytimg.com/vi/FC6Zuz7Lj_I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA08wE-4lltOolyUs40Z6xHbXnUmg"},
-
-{title:"The Voice of Hind Rajab",categories:["Mejor Documental Corto"],where:"Festivales / No disponible",poster:"https://cdn.dribbble.com/userupload/44806376/file/8832078e73b410b927d61a66a7a7e4ff.jpg?resize=752x&vertical=center"},
-
-{title:"Train Dreams",categories:["Mejor Película","Mejor Actor","Mejor Guion Adaptado"],where:"Netflix",poster:"https://m.media-amazon.com/images/M/MV5BZDkzNzkyNTktYzNhMi00YjhiLWI5YmUtZjliMTY0ZDc5NmMyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
-
-{title:"Two People Exchanging Saliva",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Two_People_Exchanging_Saliva_film_poster.jpg/250px-Two_People_Exchanging_Saliva_film_poster.jpg"},
+ {title:"Arco",categories:["Mejor Película Animada"],where:"Cines (estreno limitado) / Próximamente en streaming",poster:"https://m.media-amazon.com/images/M/MV5BM2IzNjdiNzUtNTJjMy00Mjk5LTg3MzItNzA2ZjYzOWE2MGIyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Avatar: fuego y ceniza",categories:["Mejores Efectos Visuales","Mejor Diseño de Vestuario"],where:"Cines",poster:"https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_.jpg"},
+ {title:"Blue Moon",categories:["Mejor Actor","Mejor Guion Original"],where:"Cines / Alquiler digital",poster:"https://m.media-amazon.com/images/M/MV5BODQ0NjNlN2MtNGRmZi00OGYzLWFjNGYtMjkyMTlmMWFkNTQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Bugonia",categories:["Mejor Película","Mejor Actriz","Mejor Guion Adaptado","Banda Sonora Original"],where:"Peacock / Alquiler digital",poster:"https://pics.filmaffinity.com/Bugonia-602321624-large.jpg"},
+ {title:"Butterfly",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://miro.medium.com/v2/resize:fit:3996/format:webp/1*nG5tcRlBgHrDMyyZlRrdeg.jpeg"},
+ {title:"Butcher’s Stain",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BYTQ2NDM4MzYtYjM5ZS00YTcyLWI2ZjktN2U4YjdmMzAxZDEzXkEyXkFqcGc@._V1_.jpg"},
+ {title:"Come See Me In The Good Light",categories:["Mejor Documental"],where:"Alquiler digital / Festivales",poster:"https://m.media-amazon.com/images/M/MV5BZTEwNjRiMzUtMmU1OC00OWE5LTkwYjItMGE1NTQwMTFiM2NmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Cutting Through Rocks",categories:["Mejor Documental"],where:"Festivales / No disponible",poster:"https://m.media-amazon.com/images/M/MV5BYmZkZmU2OTctM2U4Ny00NmMyLWFmZTktMjk4MDJkY2QyZDdiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Elio",categories:["Mejor Película Animada"],where:"Disney+",poster:"https://lumiere-a.akamaihd.net/v1/images/image002_0ebab968.png"},
+ {title:"F1",categories:["Mejor Película","Mejor Sonido","Mejor Montaje","Mejores Efectos Visuales"],where:"Apple TV+",poster:"https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_.jpg"},
+ {title:"Forevergreen",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://static.wixstatic.com/media/aead62_c232b06a04f042f3b875c22437cf2a3b~mv2.jpg"},
+ {title:"Frankenstein",categories:["Mejor Película","Mejor Actor de Reparto","Mejor Guion Adaptado","Mejor Cinematografía","Banda Sonora Original","Mejor Diseño de Producción","Mejor Diseño de Vestuario","Mejor Maquillaje y Peinado","Mejor Sonido"],where:"Netflix",poster:"https://m.media-amazon.com/images/M/MV5BYzYzNDYxMTQtMTU4OS00MTdlLThhMTQtZjI4NGJmMTZmNmRiXkEyXkFqcGc@._V1_.jpg"},
+ {title:"Hamnet",categories:["Mejor Película","Mejor Actriz","Mejor Guion Adaptado","Mejor Dirección","Diseño de Vestuario","Mejor Casting","Banda Sonora Original","Diseño de Producción"],where:"Cines / Próximamente en streaming",poster:"https://m.media-amazon.com/images/M/MV5BMDQ5ZmY0OWYtOTYzZi00Mzg5LWE3N2EtMjYwZTAzZmJhYjkyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"It Was Just An Accident",categories:["Mejor Película Internacional","Mejor Guion Original"],where:"MUBI (algunas regiones)",poster:"https://m.media-amazon.com/images/M/MV5BMWJkZmZlNjUtM2Q1OC00MmNjLWFkOWEtNjRhN2FkM2ZlMjI3XkEyXkFqcGc@._V1_.jpg"},
+ {title:"Jane Austen’s Period Drama",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://upload.wikimedia.org/wikipedia/en/2/25/Jane_Austen%27s_Period_Drama_film_poster.jpg"},
+ {title:"Kpop Demon Hunters",categories:["Mejor Película Animada","Mejor Canción Original"],where:"Netflix",poster:"https://pics.filmaffinity.com/K_Pop_Demon_Hunters-845492393-mmed.jpg"},
+ {title:"La pequeña Amélie o el personaje de la lluvia",categories:["Mejor Película Animada"],where:"Cines / Próximamente en streaming",poster:"https://s3.amazonaws.com/nightjarprod/content/uploads/sites/130/2025/10/27180833/smasJY24MYsQ6JMxW817KmCimVt-683x1024.jpg"},
+ {title:"Marty Supreme",categories:["Mejor Película","Mejor Dirección","Mejor Actor","Mejor Guion Original","Mejor Montaje","Mejor Fotografía","Diseño de Vestuario","Mejor Reparto","Diseño de Producción"],where:"Cines",poster:"https://m.media-amazon.com/images/M/MV5BZTRhYjI1MTItMWYwMi00MjY5LWI1OTktMzQwNzA3MWJlN2QyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Mr. Nobody Against Putin",categories:["Mejor Documental"],where:"Festivales / Alquiler digital",poster:"https://kinolorber.com/media_cache/userFiles/uploads/films/mr-nobody-against-putin/full/MrNobodyAgainstPutin_poster_KL_2025x3000.jpg"},
+ {title:"One Battle After Another",categories:["Mejor Película","Mejor Dirección","Mejor Guion Adaptado","Mejor Actor","Mejor Actriz de Reparto","Mejor Actor de Reparto","Mejor Montaje","Mejor Fotografía","Mejor Casting","Mejor Banda Sonora","Diseño de Producción","Mejor Sonido"],where:"Max (HBO)",poster:"https://s3.amazonaws.com/nightjarprod/content/uploads/sites/261/2025/10/06134335/m1jFoahEbeQXtx4zArT2FKdbNIj-scaled.jpg"},
+ {title:"Retirement Plan",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BNGI3ODc4ZTUtZmNiOC00MzUzLTg1NTItZTUwNDViNDNhNzgxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Sentimental Value",categories:["Mejor Película","Mejor Dirección","Mejor Actriz","Mejor Actriz de Reparto","Mejor Actor de Reparto","Mejor Guion Original","Mejor Película Internacional","Mejor Montaje"],where:"Alquiler digital (Prime Video / Apple TV)",poster:"https://m.media-amazon.com/images/M/MV5BNTMwMTk0Y2QtY2VhNy00OGYwLThkMjMtZjkwMGI3MTJiMjAyXkEyXkFqcGc@._V1_.jpg"},
+ {title:"Sirat",categories:["Mejor Película Internacional"],where:"Cines de autor / MUBI",poster:"https://m.media-amazon.com/images/M/MV5BYjIxMTIwNmYtMzczMi00NWIzLTg1ODgtOWFhYjE3YTNkZDI0XkEyXkFqcGc@._V1_.jpg"},
+ {title:"Sinners",categories:["Mejor Película","Mejor Actor","Mejor Fotografía"],where:"Max (HBO)",poster:"https://m.media-amazon.com/images/M/MV5BNjIwZWY4ZDEtMmIxZS00NDA4LTg4ZGMtMzUwZTYyNzgxMzk5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"The Alabama Solution",categories:["Mejor Documental Corto"],where:"No disponible",poster:"https://a.ltrbxd.com/resized/film-poster/1/2/9/5/2/0/6/1295206-the-alabama-solution-0-230-0-345-crop.jpg?v=1466f00681"},
+ {title:"The Girl Who Cried Pearls",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BOGZhMWIwYmEtN2MyMS00OGFjLWIxYWMtNDMyMWNkZTAyMWI3XkEyXkFqcGc@._V1_.jpg"},
+ {title:"The Perfect Neighbor",categories:["Mejor Documental Corto"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BZmYxZjA5YmItMjJkYi00NzllLWJjMzgtZjFjZjBlZGQwMmRkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"The Secret Agent",categories:["Mejor Película","Mejor Actor de Reparto"],where:"Cines / Próximamente en streaming",poster:"https://shop.trigon-film.org/en/Posters_One_Sheet/The_Secret_Agent/cover_full.jpg"},
+ {title:"The Singers",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://m.media-amazon.com/images/M/MV5BNWE3YjQ1ZGYtNjYyZC00ZmI0LWFjNDAtZWZiZWIxNzBlMzBkXkEyXkFqcGc@._V1_.jpg"},
+ {title:"The Three Sisters",categories:["Cortometraje Animado"],where:"No disponible",poster:"https://i.ytimg.com/vi/FC6Zuz7Lj_I/hq720.jpg"},
+ {title:"The Voice of Hind Rajab",categories:["Mejor Documental Corto"],where:"Festivales / No disponible",poster:"https://cdn.dribbble.com/userupload/44806376/file/8832078e73b410b927d61a66a7a7e4ff.jpg"},
+ {title:"Train Dreams",categories:["Mejor Película","Mejor Actor","Mejor Guion Adaptado"],where:"Netflix",poster:"https://m.media-amazon.com/images/M/MV5BZDkzNzkyNTktYzNhMi00YjhiLWI5YmUtZjliMTY0ZDc5NmMyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"},
+ {title:"Two People Exchanging Saliva",categories:["Cortometraje de Acción Real"],where:"No disponible",poster:"https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Two_People_Exchanging_Saliva_film_poster.jpg/250px-Two_People_Exchanging_Saliva_film_poster.jpg"}
 ];
 
-/* RENDER */
 const main=document.getElementById("main");
 const counter=document.getElementById("counter");
 
@@ -236,7 +197,7 @@ for(let i=0;i<movies.length;i+=4){
     d.className="movie";
     d.dataset.id=m.title;
     d.innerHTML=`
-      <div class="poster"><img src="${m.poster}"></div>
+      <div class="poster"><img src="${m.poster}" alt="${m.title}"></div>
       <div class="info">
         <h2>${m.title}</h2>
         <div class="categories">
@@ -250,7 +211,6 @@ for(let i=0;i<movies.length;i+=4){
   main.appendChild(s);
 }
 
-/* MEMORIA + CONTADOR */
 function updateCounter(){
   const seen=movies.filter(m=>localStorage.getItem(m.title)==="true").length;
   counter.textContent=`Vistas: ${seen} / ${movies.length}`;
@@ -262,34 +222,25 @@ document.querySelectorAll(".movie").forEach(m=>{
   cb.checked=localStorage.getItem(id)==="true";
   if(cb.checked)m.classList.add("vista");
   cb.addEventListener("change",()=>{
-    localStorage.setItem(id,cb.checked);
+    localStorage.setItem(id,cb.checked ? "true":"false");
     m.classList.toggle("vista",cb.checked);
     updateCounter();
   });
 });
+
 updateCounter();
 
-/* ANIMACION */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"));
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("visible");
+      obs.unobserve(e.target);
+    }
+  });
 },{threshold:.45});
-document.querySelectorAll(".section").forEach(s=>obs.observe(s));
 
-/* TECLADO */
-window.addEventListener("keydown",e=>{
-  if(e.key==="ArrowDown")main.scrollBy({top:innerHeight,behavior:"smooth"});
-  if(e.key==="ArrowUp")main.scrollBy({top:-innerHeight,behavior:"smooth"});
-});
+document.querySelectorAll(".section").forEach(s=>obs.observe(s));
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
